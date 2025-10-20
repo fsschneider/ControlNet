@@ -1,0 +1,1 @@
+"""Latent diffusion models."""

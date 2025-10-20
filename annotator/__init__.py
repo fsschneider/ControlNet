@@ -1,0 +1,1 @@
+"""Annotator package root."""
