@@ -6,11 +6,11 @@ import torch
 import torch.nn as nn
 from torchvision.transforms import Compose
 
-from .midas.dpt_depth import DPTDepthModel
-from .midas.midas_net import MidasNet
-from .midas.midas_net_custom import MidasNet_small
-from .midas.transforms import Resize, NormalizeImage, PrepareForNet
-from annotator.util import annotator_ckpts_path
+from ControlNet.annotator.midas.midas.dpt_depth import DPTDepthModel
+from ControlNet.annotator.midas.midas.midas_net import MidasNet
+from ControlNet.annotator.midas.midas.midas_net_custom import MidasNet_small
+from ControlNet.annotator.midas.midas.transforms import Resize, NormalizeImage, PrepareForNet
+from ControlNet.annotator.util import annotator_ckpts_path
 
 
 ISL_PATHS = {

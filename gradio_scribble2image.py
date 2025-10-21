@@ -1,4 +1,4 @@
-from share import *
+from ControlNet.share import *
 import config
 
 import cv2
@@ -9,9 +9,9 @@ import torch
 import random
 
 from pytorch_lightning import seed_everything
-from annotator.util import resize_image, HWC3
-from cldm.model import create_model, load_state_dict
-from cldm.ddim_hacked import DDIMSampler
+from ControlNet.annotator.util import resize_image, HWC3
+from ControlNet.cldm.model import create_model, load_state_dict
+from ControlNet.cldm.ddim_hacked import DDIMSampler
 
 
 model = create_model('./models/cldm_v15.yaml').cpu()

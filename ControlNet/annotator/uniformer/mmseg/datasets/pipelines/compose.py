@@ -1,6 +1,6 @@
 import collections
 
-from annotator.uniformer.mmcv.utils import build_from_cfg
+from ControlNet.annotator.uniformer.mmcv.utils import build_from_cfg
 
 from ..builder import PIPELINES
 

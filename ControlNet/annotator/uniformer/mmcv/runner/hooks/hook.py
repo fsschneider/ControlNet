@@ -1,5 +1,5 @@
 # Copyright (c) OpenMMLab. All rights reserved.
-from annotator.uniformer.mmcv.utils import Registry, is_method_overridden
+from ControlNet.annotator.uniformer.mmcv.utils import Registry, is_method_overridden
 
 HOOKS = Registry('hook')
 

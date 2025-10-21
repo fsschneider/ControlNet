@@ -1,4 +1,4 @@
-from annotator.uniformer.mmcv.utils import Registry, build_from_cfg
+from ControlNet.annotator.uniformer.mmcv.utils import Registry, build_from_cfg
 
 PIXEL_SAMPLERS = Registry('pixel sampler')
 

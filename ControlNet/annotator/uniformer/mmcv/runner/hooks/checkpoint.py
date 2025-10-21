@@ -2,7 +2,7 @@
 import os.path as osp
 import warnings
 
-from annotator.uniformer.mmcv.fileio import FileClient
+from ControlNet.annotator.uniformer.mmcv.fileio import FileClient
 from ..dist_utils import allreduce_params, master_only
 from .hook import HOOKS, Hook
 

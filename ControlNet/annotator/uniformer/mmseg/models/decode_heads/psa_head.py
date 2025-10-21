@@ -1,14 +1,14 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from annotator.uniformer.mmcv.cnn import ConvModule
+from ControlNet.annotator.uniformer.mmcv.cnn import ConvModule
 
-from annotator.uniformer.mmseg.ops import resize
+from ControlNet.annotator.uniformer.mmseg.ops import resize
 from ..builder import HEADS
 from .decode_head import BaseDecodeHead
 
 try:
-    from annotator.uniformer.mmcv.ops import PSAMask
+    from ControlNet.annotator.uniformer.mmcv.ops import PSAMask
 except ModuleNotFoundError:
     PSAMask = None
 

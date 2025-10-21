@@ -2,7 +2,7 @@ import warnings
 
 import torch
 
-from annotator.uniformer.mmcv.utils import digit_version
+from ControlNet.annotator.uniformer.mmcv.utils import digit_version
 
 
 def is_jit_tracing() -> bool:

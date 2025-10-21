@@ -8,10 +8,10 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 import torch
 import numpy as np
-from . import util
-from .body import Body
-from .hand import Hand
-from annotator.util import annotator_ckpts_path
+from ControlNet.annotator.openpose import util
+from ControlNet.annotator.openpose.body import Body
+from ControlNet.annotator.openpose.hand import Hand
+from ControlNet.annotator.util import annotator_ckpts_path
 
 
 body_model_path = "https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/body_pose_model.pth"

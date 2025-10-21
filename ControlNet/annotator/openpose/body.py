@@ -8,8 +8,8 @@ import matplotlib
 import torch
 from torchvision import transforms
 
-from . import util
-from .model import bodypose_model
+from ControlNet.annotator.openpose import util
+from ControlNet.annotator.openpose.model import bodypose_model
 
 class Body(object):
     def __init__(self, model_path):

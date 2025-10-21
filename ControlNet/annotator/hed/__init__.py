@@ -11,7 +11,7 @@ import torch
 import numpy as np
 
 from einops import rearrange
-from annotator.util import annotator_ckpts_path
+from ControlNet.annotator.util import annotator_ckpts_path
 
 
 class DoubleConvBlock(torch.nn.Module):

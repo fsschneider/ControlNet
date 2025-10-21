@@ -9,8 +9,8 @@ import matplotlib
 import torch
 from skimage.measure import label
 
-from .model import handpose_model
-from . import util
+from ControlNet.annotator.openpose.model import handpose_model
+from ControlNet.annotator.openpose import util
 
 class Hand(object):
     def __init__(self, model_path):

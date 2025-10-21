@@ -3,7 +3,7 @@ import tempfile
 
 import annotator.uniformer.mmcv as mmcv
 import numpy as np
-from annotator.uniformer.mmcv.utils import print_log
+from ControlNet.annotator.uniformer.mmcv.utils import print_log
 from PIL import Image
 
 from .builder import DATASETS

@@ -16,8 +16,8 @@ import torch.utils.checkpoint as checkpoint
 import numpy as np
 from timm.models.layers import DropPath, to_2tuple, trunc_normal_
 
-from annotator.uniformer.mmcv_custom import load_checkpoint
-from annotator.uniformer.mmseg.utils import get_root_logger
+from ControlNet.annotator.uniformer.mmcv_custom import load_checkpoint
+from ControlNet.annotator.uniformer.mmseg.utils import get_root_logger
 from ..builder import BACKBONES
 
 

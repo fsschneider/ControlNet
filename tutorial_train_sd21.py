@@ -1,10 +1,10 @@
-from share import *
+from ControlNet.share import *
 
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
 from tutorial_dataset import MyDataset
-from cldm.logger import ImageLogger
-from cldm.model import create_model, load_state_dict
+from ControlNet.cldm.logger import ImageLogger
+from ControlNet.cldm.model import create_model, load_state_dict
 
 
 # Configs

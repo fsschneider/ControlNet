@@ -1,7 +1,7 @@
 import warnings
 
-from annotator.uniformer.mmcv.cnn import MODELS as MMCV_MODELS
-from annotator.uniformer.mmcv.utils import Registry
+from ControlNet.annotator.uniformer.mmcv.cnn import MODELS as MMCV_MODELS
+from ControlNet.annotator.uniformer.mmcv.utils import Registry
 
 MODELS = Registry('models', parent=MMCV_MODELS)
 

@@ -1,7 +1,7 @@
 """SAMPLING ONLY."""
 import torch
 
-from .dpm_solver import NoiseScheduleVP, model_wrapper, DPM_Solver
+from ControlNet.ldm.models.diffusion.dpm_solver.dpm_solver import NoiseScheduleVP, model_wrapper, DPM_Solver
 
 
 MODEL_TYPES = {

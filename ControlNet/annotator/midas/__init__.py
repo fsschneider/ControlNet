@@ -7,7 +7,7 @@ import numpy as np
 import torch
 
 from einops import rearrange
-from .api import MiDaSInference
+from ControlNet.annotator.midas.api import MiDaSInference
 
 
 class MidasDetector:

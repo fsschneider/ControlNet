@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 
-from .vit import (
+from ControlNet.ldm.modules.midas.midas.vit import (
     _make_pretrained_vitb_rn50_384,
     _make_pretrained_vitl16_384,
     _make_pretrained_vitb16_384,

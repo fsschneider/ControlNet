@@ -2,8 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from .base_model import BaseModel
-from .blocks import (
+from ControlNet.annotator.midas.midas.base_model import BaseModel
+from ControlNet.annotator.midas.midas.blocks import (
     FeatureFusionBlock,
     FeatureFusionBlock_custom,
     Interpolate,

@@ -20,7 +20,7 @@ But it does not know the meaning of that "Control Image (Source Image)". Our tar
 
 ## Step 1 - Get a dataset
 
-Just download the Fill50K dataset from [our huggingface page](https://huggingface.co/lllyasviel/ControlNet) (training/fill50k.zip, the file is only 200M!). Make sure that the data is decompressed as 
+Just download the Fill50K dataset from [our huggingface page](https://huggingface.co/lllyasviel/ControlNet) (training/fill50k.zip, the file is only 200M!). Make sure that the data is decompressed as
 
     ControlNet/training/fill50k/prompt.json
     ControlNet/training/fill50k/source/X.png
@@ -102,7 +102,7 @@ print(hint.shape)
 
 ```
 
-The outputs of this simple test on my machine are 
+The outputs of this simple test on my machine are
 
     50000
     burly wood circle with orange background
@@ -111,7 +111,7 @@ The outputs of this simple test on my machine are
 
 And this code is in "tutorial_dataset_test.py".
 
-In this way, the dataset is an array-like object with 50000 items. Each item is a dict with three entry "jpg", "txt", and "hint". The "jpg" is the target image, the "hint" is the control image, and the "txt" is the prompt. 
+In this way, the dataset is an array-like object with 50000 items. Each item is a dict with three entry "jpg", "txt", and "hint". The "jpg" is the target image, the "hint" is the control image, and the "txt" is the prompt.
 
 Do not ask us why we use these three names - this is related to the dark history of a library called LDM.
 
@@ -121,7 +121,7 @@ Then you need to decide which Stable Diffusion Model you want to control. In thi
 
 (Or ["v2-1_512-ema-pruned.ckpt"](https://huggingface.co/stabilityai/stable-diffusion-2-1-base/tree/main) if you are using SD2.)
 
-Then you need to attach a control net to the SD model. The architecture is 
+Then you need to attach a control net to the SD model. The architecture is
 
 ![img](../github_page/sd.png)
 
@@ -151,8 +151,8 @@ The training code in "tutorial_train.py" is actually surprisingly simple:
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
 from tutorial_dataset import MyDataset
-from cldm.logger import ImageLogger
-from cldm.model import create_model, load_state_dict
+from ControlNet.cldm.logger import ImageLogger
+from ControlNet.cldm.model import create_model, load_state_dict
 
 
 # Configs
@@ -183,6 +183,7 @@ trainer = pl.Trainer(gpus=1, precision=32, callbacks=[logger])
 trainer.fit(model, dataloader)
 
 ```
+
 (or "tutorial_train_sd21.py" if you are using SD2)
 
 Thanks to our organized dataset pytorch object and the power of pytorch_lightning, the entire code is just super short.
@@ -223,9 +224,9 @@ Ground Truth:
 
 Note that the SD's capability is preserved. Even training on this super aligned dataset, it still draws some random textures and those snow decorations. (Besides, note that the ground truth looks a bit modified because it is converted from SD's latent image.)
 
-Larger batch size and longer training will further improve this. Adequate training will make the filling perfect. 
+Larger batch size and longer training will further improve this. Adequate training will make the filling perfect.
 
-Of course, training SD to fill circles is meaningless, but this is a successful beginning of your story. 
+Of course, training SD to fill circles is meaningless, but this is a successful beginning of your story.
 
 Let us work together to control large models more and more.
 
@@ -239,7 +240,7 @@ By default, only_mid_control is False. When it is True, you will train the below
 
 ![img](../github_page/t6.png)
 
-This can be helpful when your computation power is limited and want to speed up the training, or when you want to facilitate the "global" context learning. Note that sometimes you may pause training, set it to True, resume training, and pause again, and set it again, and resume again. 
+This can be helpful when your computation power is limited and want to speed up the training, or when you want to facilitate the "global" context learning. Note that sometimes you may pause training, set it to True, resume training, and pause again, and set it again, and resume again.
 
 If your computation device is good, perhaps you do not need this. But I also know some artists are willing to train a model on their laptop for a month - in that case, perhaps this option can be useful.
 
@@ -267,7 +268,7 @@ Because we use zero convolutions, the SD should always be able to predict meanin
 
 You will always find that at some iterations, the model "suddenly" be able to fit some training conditions. This means that you will get a basically usable model at about 3k to 7k steps (future training will improve it, but that model after the first "sudden converge" should be basically functional).
 
-Note that 3k to 7k steps is not very large, and you should consider larger batch size rather than more training steps. If you can observe the "sudden converge" at 3k step using batch size 4, then, rather than train it with 300k further steps, a better idea is to use 100× gradient accumulation to re-train that 3k steps with 100× batch size. Note that perhaps we should not do this *too* extremely (perhaps 100x accumulation is too extreme), but you should consider that, since "sudden converge" will *always* happen at that certain point, getting a better converge is more important.
+Note that 3k to 7k steps is not very large, and you should consider larger batch size rather than more training steps. If you can observe the "sudden converge" at 3k step using batch size 4, then, rather than train it with 300k further steps, a better idea is to use 100× gradient accumulation to re-train that 3k steps with 100× batch size. Note that perhaps we should not do this _too_ extremely (perhaps 100x accumulation is too extreme), but you should consider that, since "sudden converge" will _always_ happen at that certain point, getting a better converge is more important.
 
 Because that "sudden converge" always happens, lets say "sudden converge" will happen at 3k step and our money can optimize 90k step, then we have two options: (1) train 3k steps, sudden converge, then train 87k steps. (2) 30x gradient accumulation, train 3k steps (90k real computation steps), then sudden converge.
 
