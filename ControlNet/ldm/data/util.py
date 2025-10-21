@@ -1,6 +1,6 @@
 import torch
 
-from ControlNet.ldm.modules.midas.api import load_midas_transform
+from ldm.modules.midas.api import load_midas_transform
 
 
 class AddMiDaS(object):
