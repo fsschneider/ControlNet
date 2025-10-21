@@ -85,15 +85,12 @@ def get_obj_from_str(string, reload=False):
     # Determine if this is a local ControlNet module that needs relative import
     if module.startswith(('ldm.', 'cldm.')):
         # For local modules, use ControlNet as the package context
-        package_context = 'ControlNet'
-    else:
-        # For external packages like torch, use absolute import
-        package_context = None
-    
+        module = 'ControlNet.' + module
+
     if reload:
-        module_imp = importlib.import_module(module, package=package_context)
+        module_imp = importlib.import_module(module)
         importlib.reload(module_imp)
-    return getattr(importlib.import_module(module, package=package_context), cls)
+    return getattr(importlib.import_module(module), cls)
 
 
 class AdamWwithEMAandWings(optim.Optimizer):
