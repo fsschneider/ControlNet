@@ -81,11 +81,19 @@ def instantiate_from_config(config):
 
 def get_obj_from_str(string, reload=False):
     module, cls = string.rsplit(".", 1)
-    module = "ControlNet." + module
+    
+    # Determine if this is a local ControlNet module that needs relative import
+    if module.startswith(('ldm.', 'cldm.')):
+        # For local modules, use ControlNet as the package context
+        package_context = 'ControlNet'
+    else:
+        # For external packages like torch, use absolute import
+        package_context = None
+    
     if reload:
-        module_imp = importlib.import_module(module)
+        module_imp = importlib.import_module(module, package=package_context)
         importlib.reload(module_imp)
-    return getattr(importlib.import_module(module, package=None), cls)
+    return getattr(importlib.import_module(module, package=package_context), cls)
 
 
 class AdamWwithEMAandWings(optim.Optimizer):
